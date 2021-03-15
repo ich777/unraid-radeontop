@@ -1,0 +1,97 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+  <!ENTITY name      "radeontop">
+  <!ENTITY author    "ich777">
+  <!ENTITY version   "2021.03.15">
+  <!ENTITY gitURL    "https://github.com/&author;/unraid-&name;/raw/master">
+  <!ENTITY pluginURL "&gitURL;/&name;.plg">
+  <!ENTITY md5       "abc27b539c0456cd17ebecb65f390110">
+  <!ENTITY plugin    "/boot/config/plugins/&name;">
+  <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0">
+
+<CHANGES>
+
+###2021.03.15
+- Initial release - based on radeontop 1.3
+
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version;')
+</INLINE>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/packages/&name;-&version;.txz</URL>
+<MD5>&md5;</MD5>
+</FILE>
+
+<FILE Name="&emhttp;/README.md">
+<INLINE>
+**Radeon TOP**
+
+This Plugin adds the tool 'radeontop' to your unRAID server and also enables your AMD GPU from the installation of this plugin on, so no editis to the 'go' file or creation of other files are necessary.
+To see the usage of your GPU open up the unRAID Terminal and type in 'radeontop' (without quotes).
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash">
+<INLINE>
+
+enableamd() {
+#Enable AMDGPU Kernel module
+if modprobe amdgpu ; then
+  echo
+  echo "---AMDGPU Kernel Module successfully enabled!---"
+else
+  echo
+  echo "------Something went wrong! Can't enable-------"
+  echo "----AMDGPU Kernel Module, removing package!----"
+  removepkg &name;-&version;
+  rm -rf /usr/local/emhttp/plugins/&name;
+  rm -rf &plugin;
+  exit 1
+fi
+sleep 1
+chmod -R 777 /dev/dri
+}
+
+#Check if Kernel Module is already enabled
+if [ -z "$(lsmod | grep "amdgpu")" ]; then
+  echo
+  echo "---------Enabling AMDGPU Kernel Module---------"
+  enableamd
+else
+  echo
+  echo "-----AMDGPU Kernel Module already enabled!-----"
+fi
+
+echo
+echo "----Installation of radeontop complete-----"
+
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+
+echo "-------------------------------------------"
+echo "----------Uninstalling radeontop-----------"
+echo "-------------------------------------------"
+# Remove plugin related files
+removepkg &name;-&version;
+rm -rf /usr/local/emhttp/plugins/&name;
+rm -rf &plugin;
+echo
+echo "-------------------------------------------"
+echo "---Uninstallation of radeontop complete!---"
+echo "-------------------------------------------"
+echo
+
+</INLINE>
+</FILE>
+</PLUGIN>
