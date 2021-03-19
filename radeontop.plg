@@ -34,7 +34,7 @@ rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version
 <INLINE>
 **Radeon TOP**
 
-This Plugin adds the tool 'radeontop' to your unRAID server and also enables your AMD GPU from the installation of this plugin on, so no editis to the 'go' file or creation of other files are necessary.
+This Plugin adds the tool 'radeontop' to your unRAID server and also enables your AMD GPU from the installation of this plugin on, so no editis to the 'go' file or creation of other files are necessary (please not that this Plugin only enables the 'amdgpu' Kernel module and not the 'radeon' Kernel module).
 To see the usage of your GPU open up the unRAID Terminal and type in 'radeontop' (without quotes).
 </INLINE>
 </FILE>
