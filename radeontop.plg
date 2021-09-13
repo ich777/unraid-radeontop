@@ -2,10 +2,10 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name      "radeontop">
   <!ENTITY author    "ich777">
-  <!ENTITY version   "2021.03.15">
+  <!ENTITY version   "2021.09.13">
   <!ENTITY gitURL    "https://github.com/&author;/unraid-&name;/raw/master">
   <!ENTITY pluginURL "&gitURL;/&name;.plg">
-  <!ENTITY md5       "27d4bef1679b178f470690ca79b44bb8">
+  <!ENTITY md5       "4bedd219b7f72b333707b90a1974c29b">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
   <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
@@ -13,6 +13,9 @@
 <PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0">
 
 <CHANGES>
+
+###2021.09.13
+- Bumped radeontop version - based on master branch from 2021.09.13
 
 ###2021.03.15
 - Initial release - based on radeontop 1.3
