@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name      "radeontop">
   <!ENTITY author    "ich777">
-  <!ENTITY version   "2023.26.05">
+  <!ENTITY version   "2023.02.05">
   <!ENTITY gitURL    "https://github.com/&author;/unraid-&name;/releases/download">
   <!ENTITY pluginURL "https://raw.githubusercontent.com/&author;/unraid-&name;/master/&name;.plg">
   <!ENTITY md5       "e1d02434e53d8d52bc01f094dee73e1a">
