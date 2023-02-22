@@ -2,10 +2,10 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name      "radeontop">
   <!ENTITY author    "ich777">
-  <!ENTITY version   "2023.02.05">
+  <!ENTITY version   "2023.02.22">
   <!ENTITY gitURL    "https://github.com/&author;/unraid-&name;/releases/download">
   <!ENTITY pluginURL "https://raw.githubusercontent.com/&author;/unraid-&name;/master/&name;.plg">
-  <!ENTITY md5       "e1d02434e53d8d52bc01f094dee73e1a">
+  <!ENTITY md5       "ce53b514c07ce1219e68cb9f20cb7948">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
   <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
@@ -13,6 +13,9 @@
 <PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0">
 
 <CHANGES>
+
+###2023.02.05
+- Bumped radeontop version - based on master branch from 2023.02.22
 
 ###2023.02.05
 - Switched to GitHub Release for packages
