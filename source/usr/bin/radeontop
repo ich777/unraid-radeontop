@@ -1,0 +1,3 @@
+#!/bin/bash
+# Wrapper script for radeontop by ich777 for Unraid
+LD_LIBRARY_PATH=/usr/local/emhttp/plugins/radeontop/lib /usr/local/emhttp/plugins/radeontop/bin/radeontop "$@"
